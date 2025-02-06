@@ -1,11 +1,11 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import '../../frontend/src/views/style.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import router from './route';
 import { RouterLink, RouterView } from 'vue-router';
+import '../src/views/style.css';
 
 const app = createApp(App);
 
