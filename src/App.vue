@@ -13,7 +13,7 @@ import './views/style.css';
 <template>
   <div class="relative">
     <div
-      class="wrap-navbar text-white text-sm wrapper-bar-top p-3 flex justify-between bg-[url('https://i.pinimg.com/736x/b0/1b/81/b01b8133f1153b97246c5c78db4572cb.jpg')] h-[36rem] bg-cover bg-center"
+      class="wrap-navbar text-white text-sm wrapper-bar-top p-3 flex justify-between bg-[url('https://wallpaperbat.com/img/202617-bts-dna-desktop-wallpaper-top-free-bts-dna-desktop-background.jpg')] h-[36rem] bg-cover bg-center"
     >
       <div class="left-side-bar flex">
         <div class="logo text-lg">CHEAHUN <span class="text-blue-600 bg-blue-200 p-1 rounded-es-2xl font-bold">STORE</span></div>
@@ -25,7 +25,7 @@ import './views/style.css';
           <a href="">Contact</a>
         </div>
       </div>
-      <div class="right-side-bar space-x-3 cursor-pointer text-black hidden sm:block">
+      <div class="right-side-bar space-x-3 cursor-pointer text-white hidden sm:block">
         <span><i class="fa-solid fa-magnifying-glass"></i></span>
         <span class="relative"><i class="fa-brands fa-opencart"></i><span class="absolute text-white text-[0.5rem] bg-blue-500 p-[0.1rem] pr-[4px] pl-[4px] -translate-y-1 -translate-x-2 rounded-[50%]">0</span></span>
         <span><i class="fa-regular fa-heart"></i><span class="absolute text-white text-[0.5rem] bg-blue-500 p-[0.1rem] pr-[4px] pl-[4px] -translate-y-1 -translate-x-2 rounded-[50%]">0</span></span>
