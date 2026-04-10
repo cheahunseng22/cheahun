@@ -3,96 +3,115 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-    <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto">
-            <!-- Header -->
-            <div class="text-center mb-10">
-                <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-                    Terms of Service
-                </h1>
-                <p class="text-gray-600">Last updated: April 10, 2026</p>
-            </div>
+  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
 
-            <!-- Content -->
-            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 space-y-6">
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">1. Acceptance of Terms</h2>
-                    <p class="text-gray-600 leading-relaxed">By accessing and using CHNCAM Music, you agree to be bound by these Terms of Service. If you disagree with any part, please do not use our website.</p>
-                </div>
+      <!-- Header -->
+      <div class="text-center mb-10">
+        <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
+          Terms of Service
+        </h1>
+        <p class="text-gray-600">
+          Last updated: April 2026
+        </p>
+      </div>
 
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">2. Digital Products</h2>
-                    <p class="text-gray-600 leading-relaxed mb-3">All digital music purchases are subject to the following:</p>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 ml-4">
-                        <li>Digital downloads are for personal, non-commercial use only</li>
-                        <li>You may not redistribute, resell, or share downloaded files</li>
-                        <li>Downloads are available up to 5 times from your account</li>
-                        <li>We recommend backing up your purchases</li>
-                    </ul>
-                </div>
+      <!-- Content -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 space-y-8">
 
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">3. User Accounts</h2>
-                    <p class="text-gray-600 leading-relaxed mb-3">You are responsible for maintaining the confidentiality of your account credentials. You agree to:</p>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 ml-4">
-                        <li>Provide accurate account information</li>
-                        <li>Notify us immediately of unauthorized access</li>
-                        <li>Be responsible for all activities under your account</li>
-                    </ul>
-                </div>
+        <!-- 1 -->
+        <section>
+          <h2 class="text-xl font-bold text-gray-800 mb-3">1. Acceptance of Terms</h2>
+          <p class="text-gray-600 leading-relaxed">
+            By accessing and using CHNCAM Music, you agree to follow these Terms of Service. 
+            If you do not agree, please stop using the website.
+          </p>
+        </section>
 
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">4. Payments and Refunds</h2>
-                    <p class="text-gray-600 leading-relaxed mb-3">All payments are processed securely. Our refund policy:</p>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 ml-4">
-                        <li>Digital products are non-refundable once downloaded</li>
-                        <li>Physical products may be returned within 30 days</li>
-                        <li>Contact support for defective products</li>
-                        <li>Refunds processed within 5-10 business days</li>
-                    </ul>
-                </div>
+        <!-- 2 -->
+        <section>
+          <h2 class="text-xl font-bold text-gray-800 mb-3">2. Website Purpose</h2>
+          <p class="text-gray-600 leading-relaxed">
+            CHNCAM Music is a music information and entertainment platform that provides song pages, 
+            music explanations, emotional analysis, and embedded music videos from official sources such as YouTube.
+            We do not host or store any audio or video files on our servers.
+          </p>
+        </section>
 
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">5. Intellectual Property</h2>
-                    <p class="text-gray-600 leading-relaxed">All content on this website, including music, images, logos, and text, is protected by copyright and intellectual property laws. You may not reproduce, distribute, or create derivative works without permission.</p>
-                </div>
+        <!-- 3 -->
+        <section>
+          <h2 class="text-xl font-bold text-gray-800 mb-3">3. Embedded Content</h2>
+          <p class="text-gray-600 leading-relaxed">
+            This website may display embedded videos from third-party platforms such as YouTube. 
+            We do not own or control these external videos and are not responsible for their content, availability, or accuracy.
+          </p>
+        </section>
 
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">6. Prohibited Conduct</h2>
-                    <p class="text-gray-600 leading-relaxed mb-3">You agree not to:</p>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1 ml-4">
-                        <li>Use the website for illegal purposes</li>
-                        <li>Attempt to gain unauthorized access to our systems</li>
-                        <li>Upload malicious code or viruses</li>
-                        <li>Harass, abuse, or harm others</li>
-                        <li>Scrape or copy content without permission</li>
-                    </ul>
-                </div>
+        <!-- 4 -->
+        <section>
+          <h2 class="text-xl font-bold text-gray-800 mb-3">4. User Responsibilities</h2>
+          <ul class="list-disc list-inside text-gray-600 space-y-1">
+            <li>Use the website in a legal and respectful manner</li>
+            <li>Do not attempt to hack, damage, or disrupt the website</li>
+            <li>Do not copy or reuse content without permission</li>
+            <li>Respect intellectual property rights of artists and owners</li>
+          </ul>
+        </section>
 
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">7. Limitation of Liability</h2>
-                    <p class="text-gray-600 leading-relaxed">CHNCAM Music is not liable for any indirect, incidental, or consequential damages arising from your use of our website or products. Our total liability is limited to the amount you paid for the product.</p>
-                </div>
+        <!-- 5 -->
+        <section>
+          <h2 class="text-xl font-bold text-gray-800 mb-3">5. Intellectual Property</h2>
+          <p class="text-gray-600 leading-relaxed">
+            All original content on CHNCAM Music (including design, layout, and text) belongs to the website owner unless stated otherwise. 
+            All music, videos, and related media belong to their respective copyright holders.
+          </p>
+        </section>
 
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">8. Termination</h2>
-                    <p class="text-gray-600 leading-relaxed">We reserve the right to terminate or suspend accounts that violate these terms, without prior notice.</p>
-                </div>
+        <!-- 6 -->
+        <section>
+          <h2 class="text-xl font-bold text-gray-800 mb-3">6. Third-Party Services</h2>
+          <p class="text-gray-600 leading-relaxed">
+            This website may use third-party services such as YouTube embeds, analytics tools, or advertising networks. 
+            These services operate under their own privacy and terms policies.
+          </p>
+        </section>
 
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">9. Changes to Terms</h2>
-                    <p class="text-gray-600 leading-relaxed">We may modify these terms at any time. Continued use of the website constitutes acceptance of the modified terms.</p>
-                </div>
+        <!-- 7 -->
+        <section>
+          <h2 class="text-xl font-bold text-gray-800 mb-3">7. Limitation of Liability</h2>
+          <p class="text-gray-600 leading-relaxed">
+            CHNCAM Music is provided “as is”. We are not responsible for any damages, errors, or issues arising from the use of this website 
+            or external embedded content.
+          </p>
+        </section>
 
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-3">10. Contact Information</h2>
-                    <p class="text-gray-600 leading-relaxed">For questions about these Terms, contact: <a href="mailto:cheahun2016@gmail.com" class="text-blue-600 hover:underline">cheahun2016@gmail.com</a></p>
-                </div>
+        <!-- 8 -->
+        <section>
+          <h2 class="text-xl font-bold text-gray-800 mb-3">8. Changes to Terms</h2>
+          <p class="text-gray-600 leading-relaxed">
+            We may update these Terms of Service at any time. Continued use of the website means you accept any updated terms.
+          </p>
+        </section>
 
-                <div class="pt-4 text-center text-sm text-gray-500 border-t border-gray-100">
-                    <RouterLink to="/" class="hover:text-blue-600">← Back to Home</RouterLink>
-                </div>
-            </div>
+        <!-- 9 -->
+        <section>
+          <h2 class="text-xl font-bold text-gray-800 mb-3">9. Contact</h2>
+          <p class="text-gray-600 leading-relaxed">
+            If you have any questions, contact us at: 
+            <a href="mailto:cheahun2016@gmail.com" class="text-blue-600 hover:underline">
+              cheahun2016@gmail.com
+            </a>
+          </p>
+        </section>
+
+        <!-- Back -->
+        <div class="pt-4 text-center border-t border-gray-100">
+          <RouterLink to="/" class="text-blue-600 hover:underline">
+            ← Back to Home
+          </RouterLink>
         </div>
+
+      </div>
     </div>
+  </div>
 </template>

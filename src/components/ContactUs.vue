@@ -96,35 +96,29 @@ import { RouterLink } from 'vue-router';
                     <div>
                         <h3 class="font-semibold text-gray-800 mb-2">Our Story</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">
-                            CHNCAM Music was founded with a passion for bringing the best K-pop and Asian music to fans worldwide. 
-                            We started as a small community of music lovers and have grown into a trusted platform for discovering 
-                            and purchasing authentic music from your favorite artists.
+CHNCAM Music was created with a simple idea — to make it easier for music fans to discover, understand, and enjoy K-pop and Asian music in one place. What started as a small project has now grown into a music information platform that focuses on song meaning, emotional connection, and fan experience.
                         </p>
                     </div>
                     <div>
                         <h3 class="font-semibold text-gray-800 mb-2">Our Mission</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">
-                            To provide music fans with easy access to high-quality, officially licensed music while supporting 
-                            artists and creators. We believe music brings people together, and we're committed to making that 
-                            connection seamless and enjoyable.
+Our mission is to create a music platform that goes beyond listening. We aim to help users understand the meaning behind songs, explore emotions in music, and connect with artists through deeper storytelling. We also support the use of official content through embedded platforms to ensure a legal and safe experience for all users.
                         </p>
                     </div>
                     <div>
                         <h3 class="font-semibold text-gray-800 mb-2">Why Choose Us</h3>
                         <ul class="text-gray-600 text-sm space-y-1 list-disc list-inside">
-                            <li>100% Officially Licensed Music</li>
-                            <li>High-Quality Audio (320kbps MP3 & FLAC)</li>
-                            <li>Secure Payment Processing</li>
-                            <li>Fast & Reliable Downloads</li>
-                            <li>24/7 Customer Support</li>
+                            <li> Focus on music meaning and emotional storytelling  </li>
+                            <li>Clean and easy-to-use interface  </li>
+                            <li>Official embedded music videos  </li>
+                            <li>Educational and entertainment-focused content  </li>
+                            <li>Continuously updated music information  </li>
                         </ul>
                     </div>
                     <div>
                         <h3 class="font-semibold text-gray-800 mb-2">Our Promise</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">
-                            Every purchase directly supports the artists you love. We work directly with record labels 
-                            and distributors to ensure all content is properly licensed and royalty payments are made.
-                            Your satisfaction is our top priority.
+                            We are committed to providing a safe, clean, and informative music experience. All embedded content is sourced from official platforms, and we aim to respect artists and their work while giving fans a better way to explore music.
                         </p>
                     </div>
                 </div>
