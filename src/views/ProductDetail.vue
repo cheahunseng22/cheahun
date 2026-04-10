@@ -264,14 +264,14 @@ onMounted(() => {
             <!-- Header with decorative accent -->
             <div class="relative">
               <div
-                class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-purple-500 to-pink-500"
+                class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-200 to-blue-500"
               ></div>
               <div class="p-5 md:p-6">
                 <h3
                   class="font-bold text-gray-800 mb-4 flex items-center gap-2 text-lg md:text-xl"
                 >
                   <div
-                    class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white shadow-md"
+                    class="w-8 h-8 rounded-full bg-gradient-to-r from-blue-200 to-blue-500 flex items-center justify-center text-white shadow-md"
                   >
                     <i class="fa-solid fa-music text-sm"></i>
                   </div>
@@ -313,23 +313,23 @@ onMounted(() => {
                   v-if="product.lyrics"
                 >
                   <div
-                    class="w-1 h-2 bg-purple-500 rounded-full animate-pulse"
+                    class="w-1 h-2 bg-blue-500 rounded-full animate-pulse"
                     style="animation-delay: 0s"
                   ></div>
                   <div
-                    class="w-1 h-3 bg-purple-500 rounded-full animate-pulse"
+                    class="w-1 h-3 bg-blue-500 rounded-full animate-pulse"
                     style="animation-delay: 0.2s"
                   ></div>
                   <div
-                    class="w-1 h-4 bg-purple-500 rounded-full animate-pulse"
+                    class="w-1 h-4 bg-blue-500 rounded-full animate-pulse"
                     style="animation-delay: 0.4s"
                   ></div>
                   <div
-                    class="w-1 h-3 bg-purple-500 rounded-full animate-pulse"
+                    class="w-1 h-3 bg-blue-500 rounded-full animate-pulse"
                     style="animation-delay: 0.6s"
                   ></div>
                   <div
-                    class="w-1 h-2 bg-purple-500 rounded-full animate-pulse"
+                    class="w-1 h-2 bg-blue-500 rounded-full animate-pulse"
                     style="animation-delay: 0.8s"
                   ></div>
                 </div>
