@@ -196,7 +196,7 @@ onMounted(() => {
                 <span class="text-xl"
                   ><i class="fa-solid fa-compact-disc"></i
                 ></span>
-                Music Video
+                Music By YouTube Video
               </h3>
             </div>
             <div class="p-8 text-center">
@@ -246,7 +246,7 @@ onMounted(() => {
               <span class="text-xl"
                 ><i class="fa-solid fa-notes-medical"></i
               ></span>
-              Description
+              Overview
             </h3>
             <p class="text-gray-600 leading-relaxed">
               {{
@@ -275,10 +275,10 @@ onMounted(() => {
                   >
                     <i class="fa-solid fa-music text-sm"></i>
                   </div>
-                  <span>Lyrics</span>
+                  <span>Meaning of song</span>
                   <span
                     class="text-xs font-normal text-gray-400 ml-2 hidden sm:inline"
-                    >— let the music speak</span
+                    >— Explain the meaning behind the lyrics</span
                   >
                 </h3>
 
