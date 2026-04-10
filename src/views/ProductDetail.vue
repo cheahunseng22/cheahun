@@ -143,7 +143,7 @@ onMounted(() => {
           <div v-if="hasYoutube" class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
             <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-3">
               <h3 class="font-semibold text-white flex items-center gap-2">
-                <span class="text-xl">🎬</span> Music Video
+                <span class="text-xl"><i class="fa-brands fa-youtube"></i></span> Music Video
               </h3>
             </div>
             <div class="relative pb-[56.25%] h-0">
@@ -200,6 +200,16 @@ onMounted(() => {
             </h3>
             <p class="text-gray-600 leading-relaxed">
               {{ product.full_description || product.description || 'No description available' }}
+            </p>
+          </div>
+
+                    <!-- lyrics Card -->
+          <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+            <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
+              <span class="text-xl"><i class="fa-solid fa-music"></i></span> Lyrics   
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              {{ product.lyrics || 'No lyrics available' }}
             </p>
           </div>
           
