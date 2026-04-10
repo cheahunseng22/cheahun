@@ -11,3 +11,33 @@ body {
     -webkit-text-stroke: 2px black; /* Adjust stroke thickness and color */
     color: white; /* Text color */
   }
+
+  /* Featured banner animation */
+.featured-banner {
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Search modal animation */
+.fixed {
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

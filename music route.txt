@@ -1,0 +1,58 @@
+// ============================================
+// PUBLIC ROUTES (No authentication needed)
+// ============================================
+
+// 1. Get all tracks (for homepage cards)
+GET    /api/tracks
+
+// 2. Get single track with all details (for detail page)
+GET    /api/tracks/:id
+
+// 3. Get tracks by category (e.g., Hip Hop, Jazz)
+GET    /api/categories/:slug/tracks
+
+// 4. Get all categories
+GET    /api/categories
+
+// 5. Get all artist groups
+GET    /api/artists
+
+// 6. Get tracks by artist
+GET    /api/artists/:id/tracks
+
+// 7. Get new releases (coming soon / just released)
+GET    /api/new-releases
+
+// 8. Search tracks
+GET    /api/tracks/search?q=keyword
+
+// 9. Get featured tracks
+GET    /api/tracks/featured
+
+// ============================================
+// ADMIN ROUTES (Authentication required)
+// ============================================
+
+// ----- TRACKS -----
+POST   /api/admin/tracks          // Create track
+PUT    /api/admin/tracks/:id      // Update track
+DELETE /api/admin/tracks/:id      // Delete track
+
+// ----- TRACK DETAILS -----
+POST   /api/admin/tracks/:id/detail        // Add track details
+PUT    /api/admin/tracks/:id/detail        // Update track details
+
+// ----- CATEGORIES -----
+POST   /api/admin/categories       // Create category
+PUT    /api/admin/categories/:id   // Update category
+DELETE /api/admin/categories/:id   // Delete category
+
+// ----- ARTISTS -----
+POST   /api/admin/artists          // Create artist
+PUT    /api/admin/artists/:id      // Update artist
+DELETE /api/admin/artists/:id      // Delete artist
+
+// ----- NEW RELEASES -----
+POST   /api/admin/new-releases              // Add to new releases
+PUT    /api/admin/new-releases/:track_id    // Update release status
+DELETE /api/admin/new-releases/:track_id    // Remove from new releases
