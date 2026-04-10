@@ -231,8 +231,8 @@ onMounted(() => {
                 
                 <div class="space-y-3">
                     <input v-model="detailData.youtube_link" placeholder="YouTube URL" class="w-full p-2 border rounded" />
-                    <textarea v-model="detailData.full_description" placeholder="Full Description" rows="3" class="w-full p-2 border rounded"></textarea>
-                    <textarea v-model="detailData.lyrics" placeholder="Lyrics" rows="3" class="w-full p-2 border rounded"></textarea>
+                    <textarea v-model="detailData.full_description" placeholder="Overview" rows="3" class="w-full p-2 border rounded"></textarea>
+                    <textarea v-model="detailData.lyrics" placeholder="Meaning of song" rows="3" class="w-full p-2 border rounded"></textarea>
                     <input v-model="detailData.producer" placeholder="Producer" class="w-full p-2 border rounded" />
                     <input v-model="detailData.writer" placeholder="Writer" class="w-full p-2 border rounded" />
                     <input v-model="detailData.bpm" type="number" placeholder="BPM" class="w-full p-2 border rounded" />
