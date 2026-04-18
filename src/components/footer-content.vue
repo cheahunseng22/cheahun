@@ -69,7 +69,7 @@ onMounted(() => {
       <div class="copyright-section">
         <div class="copyright-content">
           <i class="fa-regular fa-copyright"></i>
-          <span>2025 - present chnmusic. All rights reserved.</span>
+          <span>2026 chnmusic. All rights reserved.</span>
         </div>
         <div class="copyright-links">
           <a href="/privacy">Privacy</a>
