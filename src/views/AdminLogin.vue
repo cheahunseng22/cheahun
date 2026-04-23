@@ -16,6 +16,7 @@ const ALLOWED_DOMAINS = [
         'chncam.netlify.app',     // ← ADD THIS
     'cheahun.netlify.app', 
     'www.chncam.site',
+    'chncam.site',
     '127.0.0.1',
     'yourdomain.com',        // Add your production domain
     'www.yourdomain.com',     // Add your www domain
