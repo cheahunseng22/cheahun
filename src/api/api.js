@@ -1,5 +1,7 @@
 // Base URL - change this to your production URL when deploying
-const BASE_URL = 'https://music-api-a78l.onrender.com/api';
+// const BASE_URL = 'https://music-api-a78l.onrender.com/api';
+const BASE_URL = 'http://139.59.253.179:8000/api';
+
 
 // Helper function for handling fetch requests
 async function handleRequest(url, options = {}) {
