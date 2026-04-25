@@ -252,7 +252,7 @@ const saveRelease = async () => {
         params.append('is_featured', releaseForm.value.is_featured);
         params.append('release_date', releaseDate);
         
-        const url = `https://music-api-a78l.onrender.com/api/admin/new-releases?${params.toString()}`;
+        const url = `https://chncams.duckdns.org/api/admin/new-releases?${params.toString()}`;
         
         console.log("Sending to URL:", url);
         
@@ -283,7 +283,7 @@ const saveRelease = async () => {
 
 const updateRelease = async (trackId, status) => {
     try {
-        const url = new URL(`https://music-api-a78l.onrender.com/api/admin/new-releases/${trackId}`);
+        const url = new URL(`https://chncams.duckdns.org/api/admin/new-releases/${trackId}`);
         url.searchParams.append('release_status', status);
         
         console.log("Update URL:", url.toString());
@@ -318,7 +318,7 @@ const updateRelease = async (trackId, status) => {
 const deleteRelease = async (trackId) => {
     if (confirm('Remove from new releases?')) {
         try {
-            const url = ` https://music-api-a78l.onrender.com/api/admin/new-releases/${trackId}`;
+            const url = ` https://chncams.duckdns.org/api/admin/new-releases/${trackId}`;
             
             console.log("Delete URL:", url);
             
@@ -489,7 +489,7 @@ const logout = () => {
                             <p>{{ release.artist_name }}</p>
                             <span :class="['status-badge', release.release_status]">{{ release.release_status }}</span>
                         </div>
-                        <div class="release-actions">
+                        <div class="release-actions ">
                             <select @change="updateRelease(release.track_id, $event.target.value)" class="status-select">
                                 <option value="upcoming" :selected="release.release_status === 'upcoming'">Upcoming</option>
                                 <option value="just_released" :selected="release.release_status === 'just_released'">Just Released</option>
@@ -746,17 +746,17 @@ const logout = () => {
     background: #1a1a2e; border-radius: 20px; padding: 24px; width: 90%; max-width: 500px;
 }
 .modal.large { max-width: 600px; }
-.modal h3 { color: white; margin-bottom: 20px; }
+.modal h3 { color: rgb(255, 255, 255); margin-bottom: 20px; }
 .modal input, .modal textarea, .modal select {
     width: 100%; padding: 10px; margin-bottom: 12px; background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white;
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: rgb(37, 109, 136);
 }
-.modal label { color: #9ca3af; display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.modal label { color: #005af6; display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
 .modal-buttons { display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px; }
-.btn-cancel { padding: 8px 16px; background: rgba(255,255,255,0.1); border: none; border-radius: 8px; color: white; cursor: pointer; }
-.btn-save { padding: 8px 16px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 8px; color: white; cursor: pointer; }
+.btn-cancel { padding: 8px 16px; background: rgba(255,255,255,0.1); border: none; border-radius: 8px; color: rgb(255, 255, 255); cursor: pointer; }
+.btn-save { padding: 8px 16px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 8px; color: rgb(255, 255, 255); cursor: pointer; }
 .btn-delete-sm { padding: 4px 8px; background: rgba(239,68,68,0.2); border: none; border-radius: 6px; color: #f87171; cursor: pointer; font-size: 11px; }
-.status-select { padding: 4px 8px; background: rgba(255,255,255,0.1); border: none; border-radius: 6px; color: white; font-size: 11px; }
+.status-select { padding: 4px 8px; background: rgba(255,255,255,0.1); border: none; border-radius: 6px; color: rgb(33, 118, 170); font-size: 11px; }
 .link { color: #60a5fa; text-decoration: none; }
 .font-bold { font-weight: 600; }
 .rounded-full { border-radius: 50%; }
