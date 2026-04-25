@@ -44,7 +44,13 @@ const fetchCategories = async () => {
     loading.value.categories = true;
     try {
         const data = await getAllCategories();
-        categories.value = data;
+
+        // assign fixed random icon ONCE
+        categories.value = data.map(cat => ({
+            ...cat,
+            icon: categoryIcons[Math.floor(Math.random() * categoryIcons.length)]
+        }));
+
     } catch (error) {
         console.error("Error fetching categories:", error);
     } finally {
@@ -141,6 +147,18 @@ const selectArtistFromModal = (artistId) => {
     fetchTracksByArtist(artistId);
 };
 
+const categoryIcons = [
+    '🎤', '🎷', '🎧', '🎹', '🎸',  '🎶', '🎵', '💿', '📀',
+    
+    // extra 20 icons
+    '🎺', '🥁', '🎻', '🪕', '🎼', '📻', '📡', '🎚️', '🎛️', '🎧',
+    '🪩', '🎙️', '🎞️', '🎬', '📀', '💽', '💾', '🕺', '💃', '🌟'
+];
+
+const getRandomCategoryIcon = () => {
+    return categoryIcons[Math.floor(Math.random() * categoryIcons.length)];
+};
+
 // Get artist icon based on name
 const getArtistIcon = (artistName) => {
     if (artistName?.toLowerCase().includes('burning')) return '🔥';
@@ -166,7 +184,7 @@ onMounted(() => {
     <div class="flex items-center justify-between mb-3">
         <div class="flex items-center gap-2">
             <span class="text-2xl"><i class="fa-solid fa-layer-group"></i></span>
-            <h2 class="text-xl font-bold text-blue-800">Categories</h2>
+            <h2 class="text-xl font-bold text-blue-800">Albums Categories</h2>
         </div>
     </div>
     
@@ -184,12 +202,9 @@ onMounted(() => {
                 class="bg-white rounded-lg p-3 cursor-pointer border border-gray-200 hover:border-blue-500 transition-all hover:scale-105"
             >
                 <div class="text-center">
-                    <div class="text-2xl mb-1">
-                        {{ cat.name === 'Hip Hop' ? '🎤' : 
-                           cat.name === 'Jazz' ? '🎷' : 
-                           cat.name === 'Electronic' ? '🎧' : 
-                           cat.name === 'Lo-fi' ? '🎹' : '🎵' }}
-                    </div>
+<div class="text-2xl mb-1">
+    {{ cat.icon }}
+</div>
                     <div class="font-semibold text-sm">{{ cat.name }}</div>
                 </div>
             </div>

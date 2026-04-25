@@ -8,19 +8,20 @@ const searchResults = ref([]);
 const isLoading = ref(false);
 const showResults = ref(false);
 
-// Emits to close modal
 const emit = defineEmits(['close']);
 
-// Search function
-const performSearch = async () => {
-    if (!searchQuery.value.trim()) {
+// 🔥 real search function
+const performSearch = async (query) => {
+    if (!query.trim()) {
         searchResults.value = [];
+        showResults.value = false;
         return;
     }
-    
+
     isLoading.value = true;
+
     try {
-        const results = await searchTracks(searchQuery.value);
+        const results = await searchTracks(query);
         searchResults.value = results;
         showResults.value = true;
     } catch (error) {
@@ -31,27 +32,24 @@ const performSearch = async () => {
     }
 };
 
-// Debounced search
+// 🔥 AUTO SEARCH (no button, no enter needed)
 let debounceTimer;
-const onSearchInput = () => {
+watch(searchQuery, (newVal) => {
     clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => {
-        performSearch();
-    }, 300);
-};
 
-// Close modal on escape key
+    debounceTimer = setTimeout(() => {
+        performSearch(newVal);
+    }, 300); // 300ms delay
+});
+
+// ESC close
 const handleKeydown = (e) => {
     if (e.key === 'Escape') {
         emit('close');
     }
 };
 
-// Watch for escape key
-watch(() => true, () => {
-    document.addEventListener('keydown', handleKeydown);
-    return () => document.removeEventListener('keydown', handleKeydown);
-});
+document.addEventListener('keydown', handleKeydown);
 </script>
 
 <template>

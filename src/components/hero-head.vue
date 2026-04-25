@@ -52,21 +52,24 @@ export default {
     data() {
         return {
             currentIndex: 0,
-            backgroundImages: [
-                'https://images.pexels.com/photos/167491/pexels-photo-167491.jpeg',
-                'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg',
-                'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg',
-                'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg',
-                'https://images.pexels.com/photos/210922/pexels-photo-210922.jpeg',
-                
-                // Pixabay (Free for commercial use)
-                'https://cdn.pixabay.com/photo/2015/12/10/16/39/shutterstock-1086435_1280.jpg',
-                'https://cdn.pixabay.com/photo/2013/07/18/20/26/concert-164721_1280.jpg',
-                'https://cdn.pixabay.com/photo/2016/11/22/19/08/audience-1850119_1280.jpg',
-                
-                // Placeholder gradient (Built-in fallback)
-                'https://via.placeholder.com/1920x1080/4a0080/ffffff?text=Music+Concert'
-            ],
+backgroundImages: [
+  // --- SAFE PEXELS (more stable sources) ---
+  'https://images.pexels.com/photos/164821/pexels-photo-164821.jpeg',
+  'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg',
+  'https://images.pexels.com/photos/210922/pexels-photo-210922.jpeg',
+
+  // --- PIXABAY (safe & reliable) ---
+ 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1920&q=80',
+  'https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=1920&q=80',
+  'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1920&q=80',
+  
+  'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1920&q=80',
+
+'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1920&q=80',
+
+'https://images.unsplash.com/photo-1518972559570-7cc1309f3229?auto=format&fit=crop&w=1920&q=80',
+
+],
             intervalId: null
         }
     },
