@@ -27,7 +27,12 @@ const displayedTrending = computed(() => {
 });
 
 const displayedTopArtists = computed(() => {
-  return topArtists.value.slice(0, 5);
+  const top10 = [...topArtists.value]
+    .sort((a, b) => b.trackCount - a.trackCount) // top by songs
+    .slice(0, 10); // only top 10
+
+  // shuffle top 10 randomly
+  return top10.sort(() => Math.random() - 0.5);
 });
 
 // ================= TRENDING =================
