@@ -1,5 +1,4 @@
 // Base URL - change this to your production URL when deploying
-// const BASE_URL = 'https://music-api-a78l.onrender.com/api';
 const BASE_URL = 'https://chncams.duckdns.org/api';
 
 
