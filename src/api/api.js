@@ -231,6 +231,22 @@ export function getYouTubeEmbedUrl(url) {
     return url;
 }
 
+// Increment play count for a track
+export async function incrementPlayCount(trackId) {
+    try {
+        const response = await fetch(`${BASE_URL}/tracks/${trackId}/play`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        return await response.json();
+    } catch (error) {
+        console.error('Error incrementing play count:', error);
+        return null;
+    }
+}
+
 
 
 // ============================================
@@ -268,4 +284,6 @@ export default {
     removeFromNewReleases,
     // Helpers
     getYouTubeEmbedUrl,
+    // Increment play count
+    incrementPlayCount,
 };

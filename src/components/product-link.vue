@@ -173,6 +173,7 @@ onMounted(() => {
     fetchArtists();
     fetchNewReleases();
 });
+
 </script>
 
 <template>
@@ -196,7 +197,7 @@ onMounted(() => {
         <!-- Show only first 3 categories -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-3">
             <div 
-                v-for="cat in categories.slice(0, 3)" 
+                v-for="cat in categories.slice(0, 6)" 
                 :key="cat.id"
                 @click="router.push(`/category/${cat.slug}`)"  
                 class="bg-white rounded-lg p-3 cursor-pointer border border-gray-200 hover:border-blue-500 transition-all hover:scale-105"
@@ -211,7 +212,7 @@ onMounted(() => {
         </div>
         
         <!-- See More Button for Categories -->
-        <div v-if="categories.length > 3" class="flex justify-center mt-4">
+        <div v-if="categories.length > 6" class="flex justify-center mt-4">
             <button
                 @click="showCategoryModal = true"
                 class="group px-4 py-2 bg-white rounded-full border border-blue-300 text-blue-600 font-medium hover:bg-blue-50 transition-all duration-300 text-sm"

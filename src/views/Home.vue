@@ -22,6 +22,28 @@ const topArtists = ref([]);
 const showTrendingModal = ref(false);
 const showArtistsModal = ref(false);
 
+
+// Update local play count without refreshing API
+const updateLocalPlayCount = (trackId) => {
+    // Update allTracks
+    const updatedAllTracks = [...allTracks.value];
+    const trackIndex = updatedAllTracks.findIndex(t => t.id === trackId);
+    if (trackIndex !== -1) {
+        const currentPlays = updatedAllTracks[trackIndex].total_plays || 0;
+        updatedAllTracks[trackIndex].total_plays = currentPlays + 1;
+        allTracks.value = updatedAllTracks;
+    }
+    
+    // Update tracks (filtered view)
+    const updatedTracks = [...tracks.value];
+    const filteredIndex = updatedTracks.findIndex(t => t.id === trackId);
+    if (filteredIndex !== -1) {
+        const currentPlays = updatedTracks[filteredIndex].total_plays || 0;
+        updatedTracks[filteredIndex].total_plays = currentPlays + 1;
+        tracks.value = updatedTracks;
+    }
+};
+
 const displayedTrending = computed(() => {
   return trendingTracks.value.slice(0, 5);
 });
@@ -38,17 +60,22 @@ const displayedTopArtists = computed(() => {
 // ================= TRENDING =================
 const trendingTracks = computed(() => {
   return [...allTracks.value]
-    .sort((a, b) => (b.views || 0) - (a.views || 0))
-    .slice(0, 6);
+    .sort((a, b) => (b.total_plays || 0) - (a.total_plays || 0))
+    .slice(0, 10);  // Get top 10 most played
 });
 
 // ================= DISPLAY TRACKS =================
 const displayedTracks = computed(() => {
-  return tracks.value.slice(0, 5);
+   const shuffled = [...tracks.value];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled.slice(0, 10);
 });
 
 const hasMoreTracks = computed(() => {
-  return tracks.value.length > 5;
+  return tracks.value.length > 10;
 });
 
 // ================= FETCH TRACKS =================
@@ -125,6 +152,9 @@ onMounted(() => {
   fetchFeatured();
   fetchArtists();
   window.addEventListener("filter-tracks", filterTracks);
+    window.addEventListener("track-played", (event) => {
+        updateLocalPlayCount(event.detail.trackId);
+    });
 });
 
 onUnmounted(() => {
@@ -169,7 +199,7 @@ onUnmounted(() => {
         <p class="text-sm text-gray-500 mt-1">Check back later for new music</p>
       </div>
 
-      <!-- Tracks Grid - Shows only first 5 items -->
+      <!-- Tracks Grid - Shows only first 10 items -->
       <div v-else>
         <div
           class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
@@ -181,14 +211,14 @@ onUnmounted(() => {
           />
         </div>
 
-        <!-- Single "See More" Button - Only shows if more than 5 tracks -->
+        <!-- Single "See More" Button - Only shows if more than 10 tracks -->
         <div v-if="hasMoreTracks" class="flex justify-center mt-8">
           <button
             @click="showAllProducts"
             class="group px-6 md:px-8 py-2 md:py-3 bg-white rounded-full border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 hover:border-purple-400 transition-all duration-300 hover:scale-105 shadow-sm text-[0.7rem] md:text-base"
           >
             <span class="flex items-center gap-2">
-              See More ({{ tracks.length - 5 }} more)
+              See More ({{ tracks.length - 10 }} more)
               <svg
                 class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"
                 fill="none"

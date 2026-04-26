@@ -1,21 +1,32 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import { useTrackPlay } from '../composables/useTrackPlay';
 
 const props = defineProps({
-  product: Object
+  product: {
+    type: Object,
+    required: true
+  }
 });
 
-const logId = () => {
-  console.log("Product ID clicked:", props.product.id);
-}
+const { handleTrackClick } = useTrackPlay();
+
+const handleCardClick = async (e) => {
+  // Prevent default router-link behavior
+  e.preventDefault();
+  
+  if (props.product?.id) {
+    // This will increment play count AND navigate
+    await handleTrackClick(props.product.id, `/product/${props.product.id}`);
+  }
+};
 </script>
 
 <template>
   <div class="group">
-    <RouterLink 
-      :to="`/product/${props.product.id}`" 
-      @click="logId"
-      class="block"
+    <div 
+      @click="handleCardClick"
+      class="block cursor-pointer"
     >
       <!-- Modern Card Design -->
       <div class="relative overflow-hidden rounded-xl bg-white border border-gray-200 hover:border-purple-400 transition-all duration-300 hover:scale-105 hover:shadow-xl">
@@ -57,6 +68,6 @@ const logId = () => {
           </div>
         </div>
       </div>
-    </RouterLink>
+    </div>
   </div>
 </template>

@@ -5,7 +5,7 @@ import {
     getAllTracks, createTrack, updateTrack, deleteTrack, addTrackDetail, updateTrackDetail,
     getAllCategories, createCategory, updateCategory, deleteCategory,
     getAllArtists, createArtist, updateArtist, deleteArtist,
-    getNewReleases, addToNewReleases, updateReleaseStatus, removeFromNewReleases
+    getNewReleases,getTrackById, addToNewReleases, updateReleaseStatus, removeFromNewReleases
 } from '../api/api';
 
 const router = useRouter();
@@ -89,28 +89,89 @@ const fetchReleases = async () => {
 };
 
 // ============ TRACK CRUD ============
-const openTrackModal = (track = null) => {
-    editingTrack.value = track;
+const openTrackModal = async (track = null) => {
     if (track) {
-        trackForm.value = { ...track };
+        try {
+            loading.value.tracks = true;
+            
+            // Fetch complete track data to get the category name and artist name
+            const completeTrack = await getTrackById(track.id);
+            console.log('Complete track:', completeTrack);
+            
+            // Find category ID by matching the category name
+            const matchedCategory = categories.value.find(cat => cat.name === completeTrack.category);
+            // Find artist ID by matching the artist name
+            const matchedArtist = artists.value.find(art => art.name === completeTrack.artist_name);
+            
+            console.log('Matched Category:', matchedCategory);
+            console.log('Matched Artist:', matchedArtist);
+            
+            trackForm.value = {
+                title: completeTrack.title || '',
+                cover_image: completeTrack.cover_image || '',
+                duration: completeTrack.duration || '',
+                release_date: completeTrack.release_date || '',
+                category_id: matchedCategory ? matchedCategory.id : null,
+                artist_group_id: matchedArtist ? matchedArtist.id : null,
+                is_published: true
+            };
+            
+            editingTrack.value = track;
+            
+        } catch (error) {
+            console.error('Error fetching track for edit:', error);
+            alert('Failed to load track data for editing');
+            return;
+        } finally {
+            loading.value.tracks = false;
+        }
     } else {
-        trackForm.value = { title: '', cover_image: '', duration: '', release_date: '', category_id: null, artist_group_id: null, is_published: true };
+        // New track
+        trackForm.value = { 
+            title: '', 
+            cover_image: '', 
+            duration: '', 
+            release_date: '', 
+            category_id: null, 
+            artist_group_id: null, 
+            is_published: true 
+        };
+        editingTrack.value = null;
     }
     showTrackModal.value = true;
 };
 
 const saveTrack = async () => {
     try {
+        // Get the actual category name and artist name from the IDs
+        const selectedCategory = categories.value.find(c => c.id === trackForm.value.category_id);
+        const selectedArtist = artists.value.find(a => a.id === trackForm.value.artist_group_id);
+        
+        const dataToSend = {
+            title: trackForm.value.title,
+            cover_image: trackForm.value.cover_image,
+            duration: trackForm.value.duration,
+            release_date: trackForm.value.release_date,
+            category: selectedCategory ? selectedCategory.name : '',
+            artist_name: selectedArtist ? selectedArtist.name : '',
+            is_published: trackForm.value.is_published
+        };
+        
+        console.log('Sending data:', dataToSend);
+        
         if (editingTrack.value) {
-            await updateTrack(editingTrack.value.id, trackForm.value);
+            await updateTrack(editingTrack.value.id, dataToSend);
             alert('Track updated successfully');
         } else {
-            await createTrack(trackForm.value);
+            await createTrack(dataToSend);
             alert('Track created successfully');
         }
         showTrackModal.value = false;
         fetchTracks();
-    } catch (error) { alert('Failed to save track'); }
+    } catch (error) { 
+        console.error('Error:', error);
+        alert('Failed to save track: ' + error.message);
+    }
 };
 
 const deleteTrackItem = async (id) => {
@@ -124,20 +185,40 @@ const deleteTrackItem = async (id) => {
     }
 };
 
-const openDetailModal = (track) => {
-    currentTrack.value = track;
-    detailForm.value = {
-        youtube_link: track.youtube_link || '',
-        full_description: track.full_description || '',
-        lyrics: track.lyrics || '',
-        producer: track.producer || '',
-        writer: track.writer || '',
-        bpm: track.bpm || null,
-        key_signature: track.key_signature || ''
-    };
-    showDetailModal.value = true;
+const openDetailModal = async (track) => {
+    try {
+        loading.value.tracks = true;
+        
+        // Fetch complete track with all details from API
+        const completeTrack = await getTrackById(track.id);
+        console.log('Fetched track details:', completeTrack);
+        
+        // Set current track to the complete track data
+        currentTrack.value = completeTrack;
+        
+        // Populate the form with the data from API response
+        detailForm.value = {
+            youtube_link: completeTrack.youtube_link || '',
+            full_description: completeTrack.full_description || '',
+            lyrics: completeTrack.lyrics || '',
+            producer: completeTrack.producer || '',
+            writer: completeTrack.writer || '',
+            bpm: completeTrack.bpm || null,
+            key_signature: completeTrack.key_signature || ''
+        };
+        
+        console.log('Detail form populated:', detailForm.value);
+        
+        // Open the modal
+        showDetailModal.value = true;
+        
+    } catch (error) {
+        console.error('Error fetching track details:', error);
+        alert('Failed to load track details: ' + error.message);
+    } finally {
+        loading.value.tracks = false;
+    }
 };
-
 
 
 const saveDetail = async () => {
