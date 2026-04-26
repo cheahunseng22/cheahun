@@ -1,7 +1,7 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
 import { searchTracks } from '../api/api';
-import { RouterLink } from 'vue-router';
+import { useTrackPlay } from '../composables/useTrackPlay';
 
 const searchQuery = ref('');
 const searchResults = ref([]);
@@ -9,8 +9,14 @@ const isLoading = ref(false);
 const showResults = ref(false);
 
 const emit = defineEmits(['close']);
+const { handleTrackClick } = useTrackPlay();
 
-// 🔥 real search function
+const goToTrack = (trackId) => {
+    handleTrackClick(trackId, `/product/${trackId}`);
+    emit('close');
+};
+
+// Search function
 const performSearch = async (query) => {
     if (!query.trim()) {
         searchResults.value = [];
@@ -32,14 +38,13 @@ const performSearch = async (query) => {
     }
 };
 
-// 🔥 AUTO SEARCH (no button, no enter needed)
+// Auto search with debounce
 let debounceTimer;
 watch(searchQuery, (newVal) => {
     clearTimeout(debounceTimer);
-
     debounceTimer = setTimeout(() => {
         performSearch(newVal);
-    }, 300); // 300ms delay
+    }, 300);
 });
 
 // ESC close
@@ -49,7 +54,13 @@ const handleKeydown = (e) => {
     }
 };
 
-document.addEventListener('keydown', handleKeydown);
+onMounted(() => {
+    document.addEventListener('keydown', handleKeydown);
+});
+
+onUnmounted(() => {
+    document.removeEventListener('keydown', handleKeydown);
+});
 </script>
 
 <template>
@@ -66,7 +77,6 @@ document.addEventListener('keydown', handleKeydown);
                 <input 
                     type="text"
                     v-model="searchQuery"
-                    @input="onSearchInput"
                     placeholder="Search by track name or artist..."
                     class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     autofocus
@@ -80,8 +90,8 @@ document.addEventListener('keydown', handleKeydown);
             
             <!-- Results -->
             <div v-else-if="showResults && searchResults.length > 0" class="p-4 border-t max-h-96 overflow-y-auto">
-                <div v-for="track in searchResults" :key="track.id" class="mb-4 p-3 hover:bg-gray-50 rounded-lg">
-                    <RouterLink :to="`/product/${track.id}`" @click="emit('close')" class="flex items-center gap-4">
+                <div v-for="track in searchResults" :key="track.id" class="mb-4 p-3 hover:bg-gray-50 rounded-lg cursor-pointer" @click="goToTrack(track.id)">
+                    <div class="flex items-center gap-4">
                         <img :src="track.cover_image" :alt="track.title" class="w-16 h-16 object-cover rounded">
                         <div class="flex-1">
                             <h3 class="font-semibold text-blue-600">{{ track.title }}</h3>
@@ -91,7 +101,7 @@ document.addEventListener('keydown', handleKeydown);
                         <div class="text-sm text-gray-400">
                             {{ track.duration }}
                         </div>
-                    </RouterLink>
+                    </div>
                 </div>
             </div>
             

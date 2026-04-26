@@ -9,6 +9,14 @@ import {
     getNewReleases 
 } from '../api/api';
 
+
+import { useTrackPlay } from '../composables/useTrackPlay';
+
+const { handleTrackClick } = useTrackPlay();
+const getArtistTrackCount = (artistId) => {
+    return allTracks.value.filter(t => t.artist_group_id === artistId).length;
+};
+
 // Add this with your other refs
 const showCategoryModal = ref(false);
 
@@ -36,8 +44,9 @@ const loading = ref({
 });
 
 // Navigate to track detail page
+// Navigate to track detail page with play count increment
 const goToTrack = (trackId) => {
-    router.push(`/product/${trackId}`);
+    handleTrackClick(trackId, `/product/${trackId}`);
 };
 
 const fetchCategories = async () => {
@@ -441,6 +450,7 @@ onMounted(() => {
 </div>
 
 <!-- Artist Modal -->
+<!-- Artist Modal -->
 <Teleport to="body">
     <div 
         v-if="showArtistModal" 
@@ -478,18 +488,64 @@ onMounted(() => {
                                 class="w-16 h-16 rounded-full object-cover border-2 border-purple-300"
                                 :alt="artist.name"
                             />
-                            <div v-else class="w-16 h-16 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 flex items-center justify-center text-3xl">
-                                {{ getArtistIcon(artist.name) }}
+                            <div v-else class="w-16 h-16 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 flex items-center justify-center text-3xl text-white">
+                                {{ artist.name?.charAt(0).toUpperCase() || '?' }}
                             </div>
                         </div>
                         <div class="font-semibold text-gray-800">{{ artist.name }}</div>
-                        <div v-if="artist.bio" class="text-xs text-gray-500 mt-1">{{ artist.bio.slice(0, 50) }}...</div>
+                        <div class="text-xs text-gray-400 mt-1">{{ getArtistTrackCount(artist.id) }} songs</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </Teleport>
+
+<!-- Artist Tracks Modal (when clicking See More on tracks) -->
+<Teleport to="body">
+    <div 
+        v-if="showAllTracksModal" 
+        class="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-4"
+        @click.self="showAllTracksModal = false"
+    >
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+        <div class="relative w-full max-w-3xl max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden animate-modalSlideUp">
+            <div class="sticky top-0 bg-gradient-to-r from-purple-600 to-pink-600 p-4 flex justify-between items-center z-20">
+                <div>
+                    <h3 class="text-xl font-bold text-white">All Tracks by {{ selectedArtistData?.name }}</h3>
+                    <p class="text-white/80 text-sm">{{ artistTracks.length }} tracks available</p>
+                </div>
+                <button 
+                    @click="showAllTracksModal = false"
+                    class="text-white/80 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
+                >
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto max-h-[calc(90vh-80px)] custom-scrollbar">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div 
+                        v-for="track in artistTracks" 
+                        :key="track.id"
+                        @click="goToTrack(track.id)"
+                        class="bg-gray-50 rounded-lg p-3 cursor-pointer hover:bg-purple-50 transition-all hover:scale-105 border border-gray-200 hover:border-purple-400 flex items-center gap-3"
+                    >
+                        <img :src="track.cover_image" class="w-12 h-12 object-cover rounded-lg" :alt="track.title" />
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-sm text-gray-800">{{ track.title }}</h3>
+                            <p class="text-xs text-gray-500">{{ track.artist_name }}</p>
+                            <p class="text-xs text-gray-400">{{ track.duration }}</p>
+                        </div>
+                        <div class="text-purple-500 text-sm">▶</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Teleport>
+
 
 <!-- All Tracks Modal (for selected artist) -->
 <Teleport to="body">
@@ -663,6 +719,7 @@ onMounted(() => {
         </div>
     </div>
 </Teleport>
+
     </div>
 </template>
 

@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useTrackPlay } from '../composables/useTrackPlay';
 
 const props = defineProps({
     tracks: {
@@ -10,6 +11,12 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['close']);
+const { handleTrackClick } = useTrackPlay();
+
+const goToTrack = (trackId) => {
+    handleTrackClick(trackId, `/product/${trackId}`);
+    emit('close');
+};
 
 // Close on escape key
 const handleKeydown = (e) => {
@@ -39,7 +46,7 @@ onUnmounted(() => {
                 <div class="flex items-center gap-2">
                     <span class="text-sm text-blue-500"><i class="fa-regular fa-star"></i></span>
                     <h2 class="text-xl font-bold text-white">All Featured Tracks</h2>
-                    <span class="text-xs  bg-white bg-opacity-20 text-green-500 px-2 py-1 rounded">{{ tracks.length }} tracks</span>
+                    <span class="text-xs bg-white bg-opacity-20 text-green-500 px-2 py-1 rounded">{{ tracks.length }} tracks</span>
                 </div>
                 <button @click="emit('close')" class="text-white text-2xl cursor-pointer hover:bg-opacity-20 rounded-full w-8 h-8 flex items-center justify-center">
                     ✕
@@ -49,11 +56,10 @@ onUnmounted(() => {
             <!-- Body - Scrollable -->
             <div class="p-4 overflow-y-auto max-h-[calc(80vh-80px)]">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    <RouterLink 
+                    <div 
                         v-for="track in tracks" 
                         :key="track.id"
-                        :to="`/product/${track.id}`"
-                        @click="emit('close')"
+                        @click="goToTrack(track.id)"
                         class="bg-gray-50 rounded-lg p-3 flex items-center gap-3 hover:shadow-md transition-all hover:scale-105 cursor-pointer border border-gray-200"
                     >
                         <img :src="track.cover_image" class="w-16 h-16 object-cover rounded-lg" :alt="track.title" />
@@ -63,7 +69,7 @@ onUnmounted(() => {
                             <p class="text-xs text-gray-400 mt-1">{{ track.category }}</p>
                         </div>
                         <div class="text-blue-500 text-xs">▶</div>
-                    </RouterLink>
+                    </div>
                 </div>
                 
                 <!-- Empty state -->
