@@ -166,6 +166,47 @@ onUnmounted(() => {
   <div class="min-h-screen bg-gray-50">
     <navContent />
 
+    <!-- ADS BLOCK START -->
+<div class="w-full max-w-xs mx-auto my-10 bg-white shadow-md rounded-xl p-6 text-center">
+
+  <!-- Ad Header (like Google auto ad example) -->
+  <div class="text-4xl font-bold text-gray-400 mb-2">
+    G
+  </div>
+
+  <!-- Ad Title -->
+  <h2 class="text-lg font-semibold text-gray-700">
+    Auto ad example
+  </h2>
+
+  <!-- Ad Type -->
+  <p class="text-sm text-gray-400 mb-4">
+    In-page ad
+  </p>
+
+  <!-- Placeholder Icon -->
+  <div class="flex justify-center">
+    <div class="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center">
+      <span class="text-gray-400 text-xl">🚫</span>
+    </div>
+  </div>
+
+  <!-- Google AdSense Code (replace this part) -->
+  <!-- 
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-XXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  -->
+
+</div>
+<!-- ADS BLOCK END -->
+
     <!-- All Tracks Section -->
     <div class="all-tracks-section mt-8 px-4 pb-10 max-w-7xl mx-auto">
       <div class="flex items-center gap-2 mb-4">
