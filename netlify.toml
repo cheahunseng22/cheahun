@@ -4,6 +4,12 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/static-content/faq.html"
+  to = "/static-content/faq.html"
+  status = 200
+  force = true
+
 
 [[redirects]]
   from = "/api/*"
