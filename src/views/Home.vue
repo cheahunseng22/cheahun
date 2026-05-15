@@ -10,6 +10,8 @@ import {
 import productCart from "../components/product-cart.vue";
 import productLink from "../components/product-link.vue";
 import navContent from "../components/nav-content.vue";
+import OriginalContent from "./OriginalContent.vue";
+import MusicBlog from "./MusicBlog.vue";
 
 const tracks = ref([]);
 const allTracks = ref([]);
@@ -165,6 +167,10 @@ onUnmounted(() => {
 <template>
   <div class="min-h-screen bg-gray-50">
     <navContent />
+
+    <OriginalContent/>
+
+    <MusicBlog/>
 
     <!-- All Tracks Section -->
     <div class="all-tracks-section mt-8 px-4 pb-10 max-w-7xl mx-auto">

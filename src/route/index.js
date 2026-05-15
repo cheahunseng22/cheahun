@@ -66,7 +66,13 @@ const routes = [
     path: '/cookies',
     name: 'Cookies',
     component: Cookies
+},
+{
+    path:'/copyright',
+    name:'Copyright',
+    component: () => import('../components/Copyright.vue')
 }
+
 ];
 
 const router = createRouter({
